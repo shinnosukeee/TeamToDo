@@ -1,0 +1,23 @@
+<%= form_with model: [@team, @task], local: true do |f| %>
+  <div class="mb-4">
+    <%= f.label :title, 'タイトル', class: 'block mb-1 font-medium' %>
+    <%= f.text_field :title, class: 'w-full p-2 border rounded' %>
+  </div>
+  <div class="mb-4">
+    <%= f.label :description, '詳細', class: 'block mb-1 font-medium' %>
+    <%= f.text_area :description, rows: 4, class: 'w-full p-2 border rounded' %>
+  </div>
+  <div class="mb-4 grid grid-cols-2 gap-4">
+    <div>
+      <%= f.label :due_date, '期限', class: 'block mb-1 font-medium' %>
+      <%= f.date_field :due_date, class: 'w-full p-2 border rounded' %>
+    </div>
+    <div>
+      <%= f.label :status, '状態', class: 'block mb-1 font-medium' %>
+      <%= f.select :status, Task.status_options.to_a, {}, class: 'w-full p-2 border rounded' %>
+    </div>
+  </div>
+  <div>
+    <%= f.submit class: 'px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600' %>
+  </div>
+<% end %>
