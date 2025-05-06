@@ -1,24 +1,56 @@
-# README
+# TeamTaskApp（チームタスク管理アプリ）
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+チームを作成し、タスクを登録・管理できるWebアプリケーションです。  
+チームメンバーの招待は、チームコードを共有することで実現できます。
 
-Things you may want to cover:
+---
 
-* Ruby version
+##  主な機能
 
-* System dependencies
+- ユーザー登録 / ログイン（Devise）
+- チームの作成・編集・削除（オーナーのみ）
+- チームコードによる参加機能
+- タスクの作成 / 編集 / 削除 / 詳細表示
+- タスクの状態（着手前・開発中・確認中・完了）切り替え
+- チームメンバー管理（退出）
+- 権限によるアクセス制限（オーナー・参加者以外は閲覧不可）
 
-* Configuration
+---
 
-* Database creation
+##  使用技術
 
-* Database initialization
+- フレームワーク: **Ruby on Rails 7.2**
+- 認証: **Devise**
+- UI: **Tailwind CSS**
+- テスト: **RSpec**, **FactoryBot**
+- DB: **SQLite3**
+- その他: **Importmap**, **Hotwire**, **Turbo**
 
-* How to run the test suite
+---
 
-* Services (job queues, cache servers, search engines, etc.)
+##  セットアップ方法
 
-* Deployment instructions
+### 前提条件
 
-* ...
+- Ruby 3.x
+- Bundler
+
+### セットアップ手順
+
+```bash
+git clone https://github.com/your-username/team_task_app.git
+cd team_task_app
+
+bundle install
+bin/rails db:create db:migrate
+
+# 開発環境で起動
+bin/rails server
+
+##チーム参加の流れ
+１．チーム作成者が「招待する」ボタンでチームコードを確認
+２．参加者が「チームに参加する」ボタンを押し、チームコードを入力
+３．正しいコードであればチームに参加完了
+
+##今後追加予定の機能
+タスクごとにやり取りができる掲示板の様な機能
