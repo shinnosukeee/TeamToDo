@@ -38,7 +38,7 @@
 ### セットアップ手順
 
 ```bash
-git clone https://github.com/your-username/
+git clone https://github.com/shinnosukeee/TeamTodo
 
 bundle install
 bin/rails db:create db:migrate
