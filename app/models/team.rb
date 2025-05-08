@@ -2,9 +2,9 @@ class Team < ApplicationRecord
   before_validation :generate_join_code, on: :create
   validates :name, presence: true
 
-  has_many :memberships
+  has_many :memberships, dependent: :destroy
   has_many :users, through: :memberships
-  has_many :tasks
+  has_many :tasks, dependent: :destroy
 
   belongs_to :owner, class_name: "User"
 
