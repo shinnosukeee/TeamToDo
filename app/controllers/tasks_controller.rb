@@ -6,6 +6,10 @@ class TasksController < ApplicationController
     @task = @team.tasks.build
   end
 
+  def index
+    @team = Team.find(params[:team_id])
+    @tasks = @team.tasks.order(due_date: :asc)
+  end
   def create
     @task = @team.tasks.build(task_params)
     if @task.save

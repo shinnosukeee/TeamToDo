@@ -1,53 +1,25 @@
 <div class="max-w-4xl mx-auto p-4">
-  <div class="flex justify-between items-center mb-4">
+  <div class="mb-6">
     <h1 class="text-2xl font-bold"><%= @team.name %></h1>
-    <p class="text-gray-700 mb-6"><%= @team.description %></p>
+    <p class="text-gray-700 mb-2"><%= @team.description %></p>
 
     <div class="flex gap-2">
       <% if current_user.teams.include?(@team) %>
         <%= button_to '退出する', leave_team_path(@team), method: :delete, data: { confirm: '本当に退出しますか？' }, class: "px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600" %>
       <% end %>
-
       <% if current_user == @team.owner %>
         <%= link_to '招待する', invite_team_path(@team), class: "px-3 py-1 bg-purple-500 text-white rounded hover:bg-purple-600" %>
       <% end %>
-
+      <%= link_to 'タスク一覧を見る', team_tasks_path(@team), class: "px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600" %>
       <%= link_to 'チーム一覧に戻る', teams_path, class: "px-3 py-1 bg-gray-300 text-black rounded hover:bg-gray-400" %>
     </div>
+    <div class="mb-6">
+      <h2 class="text-xl font-semibold mb-2">チームメンバー</h2>
+      <ul class="list-disc pl-5">
+        <% @team.users.each do |user| %>
+          <li><%= user.email %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
-
-
-
-  <div class="flex justify-between items-center mb-3">
-    <h2 class="text-xl font-semibold">タスク一覧</h2>
-    <%= link_to 'タスクを追加', new_team_task_path(@team), class: "px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600" %>
-  </div>
-  <table class="min-w-full bg-white shadow rounded">
-    <thead>
-    <tr class="bg-gray-100">
-      <th class="p-2 text-left">タイトル</th>
-      <th class="p-2 text-left">期限</th>
-      <th class="p-2 text-left">状態</th>
-      <th class="p-2">操作</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @tasks.each do |task| %>
-      <tr class="border-t">
-        <td class="p-2"><%= task.title %></td>
-        <td class="p-2"><%= task.due_date&.strftime('%Y-%m-%d') %></td>
-        <td class="p-2">
-            <span class="px-2 py-1 text-sm font-medium rounded <%= task.status_class %>">
-              <%= task.status_label %>
-            </span>
-        </td>
-        <td class="p-2 text-center space-x-2">
-          <%= link_to '詳細', team_task_path(@team, task), class: "text-gray-600 hover:underline" %>
-          <%= link_to '編集', edit_team_task_path(@team, task), class: "text-blue-500 hover:underline" %>
-          <%= link_to '削除', team_task_path(@team, task), method: :delete, data: { confirm: '削除してもよいですか？' }, class: "text-red-500 hover:underline" %>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
 </div>
