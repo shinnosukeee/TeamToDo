@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_05_06_070209) do
+ActiveRecord::Schema[7.2].define(version: 2025_05_09_055959) do
   create_table "memberships", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "team_id", null: false
@@ -28,7 +28,9 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_06_070209) do
     t.integer "team_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["team_id"], name: "index_tasks_on_team_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -59,5 +61,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_06_070209) do
   add_foreign_key "memberships", "teams"
   add_foreign_key "memberships", "users"
   add_foreign_key "tasks", "teams"
+  add_foreign_key "tasks", "users"
   add_foreign_key "teams", "users", column: "owner_id"
 end

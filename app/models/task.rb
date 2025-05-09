@@ -1,5 +1,6 @@
 class Task < ApplicationRecord
   belongs_to :team
+  belongs_to :user, optional: true
   enum status: {not_started: 0, in_progress: 1, verifying: 2, done: 3}
   validates :title, presence: true
   validates :due_date, presence: true
