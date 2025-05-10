@@ -60,4 +60,31 @@ bin/rails server
 ## 今後追加予定の機能
 
 - タスクごとにやり取りができる掲示板のような機能
+- systemテストの作成
+
+## 実行画面
+- Deviseのサインアップ画面
+![実行画面](public/README/img.png)
+- チーム一覧画面
+![実行画面](public/README/img_1.png)
+- チーム作成画面(チームオーナー視点)
+![実行画面](public/README/img_2.png)
+- チーム一覧に作成したチームが追加される
+![実行画面](public/README/img_3.png)
+- チーム詳細画面
+![実行画面](public/README/img_4.png)
+- チームへの招待コード画面
+![実行画面](public/README/img_5.png)
+- タスク管理画面
+![実行画面](public/README/img_6.png)
+- タスク新規作成画面
+![実行画面](public/README/img_7.png)
+- 作成したタスクが追加される
+![実行画面](public/README/img_8.png)
+- チーム参加パターン
+![実行画面](public/README/img_9.png)
+- チームコードの入力
+![実行画面](public/README/img_10.png)
+- チームメンバーに追加される
+![実行画面](public/README/img_11.png)
 
